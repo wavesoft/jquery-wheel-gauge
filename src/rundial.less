@@ -4,6 +4,13 @@
 
 .rundial {
 
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
 	.rundial-host {
 		position: relative;
 		border: solid 1px #999;
@@ -18,6 +25,7 @@
 		background: -ms-linear-gradient(top, rgba(0,0,0,0.25) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,0) 60%,rgba(0,0,0,0.25) 99%,rgba(0,0,0,0.25) 100%);
 		background: linear-gradient(to bottom, rgba(0,0,0,0.25) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,0) 60%,rgba(0,0,0,0.25) 99%,rgba(0,0,0,0.25) 100%);
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#40000000', endColorstr='#40000000',GradientType=0 );
+		background-color: #fff;
 
 		&.rundial-underrun {
 			background: -moz-linear-gradient(top, rgba(255,0,0,0.4) 0%, rgba(179,0,0,0) 30%, rgba(102,0,0,0) 60%, rgba(3,0,0,0.25) 99%, rgba(0,0,0,0.25) 100%);
@@ -27,6 +35,7 @@
 			background: -ms-linear-gradient(top, rgba(255,0,0,0.4) 0%,rgba(179,0,0,0) 30%,rgba(102,0,0,0) 60%,rgba(3,0,0,0.25) 99%,rgba(0,0,0,0.25) 100%);
 			background: linear-gradient(to bottom, rgba(255,0,0,0.4) 0%,rgba(179,0,0,0) 30%,rgba(102,0,0,0) 60%,rgba(3,0,0,0.25) 99%,rgba(0,0,0,0.25) 100%);
 			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#66ff0000', endColorstr='#40000000',GradientType=0 );
+			background-color: #fff;
 		}
 
 		&.rundial-overrun {
@@ -37,42 +46,58 @@
 			background: -ms-linear-gradient(top, rgba(0,0,0,0.25) 0%,rgba(77,0,0,0) 30%,rgba(153,0,0,0) 60%,rgba(252,0,0,0.4) 99%,rgba(255,0,0,0.4) 100%);
 			background: linear-gradient(to bottom, rgba(0,0,0,0.25) 0%,rgba(77,0,0,0) 30%,rgba(153,0,0,0) 60%,rgba(252,0,0,0.4) 99%,rgba(255,0,0,0.4) 100%);
 			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#40000000', endColorstr='#66ff0000',GradientType=0 );
+			background-color: #fff;
 		}
 
-	}
 
-	.rundial-indicator {
-		width: 0;
-		height: 0;
-		border-top: @indicator-size solid transparent;
-		border-bottom: @indicator-size solid transparent;
-		border-left: @indicator-size solid @indicator-color;
-		position: absolute;
-		left: 0px;
-		top: 50%;
+		.rundial-indicator-bar {
+			position: absolute;
+			height: @indicator-size*2;
+			left: 0; width: 100%;
+			top: 50%;
 
-		transform: translateY(-@indicator-size);
-		-webkit-transform: translateY(-@indicator-size);
+			-webkit-transform: translateY(-@indicator-size);
+			transform: translateY(-@indicator-size);
 
-		&.rundial-indicator-right {
-			border-top: @indicator-size solid transparent;
-			border-bottom: @indicator-size solid transparent; 
-			border-right:@indicator-size solid @indicator-color; 
-			border-left: none;
-			right: 0; left: auto;
+			&:after{
+				display: block;
+				content: " ";
+				position: absolute;
+				right: 0px; top: 0;
+
+				width: 0; height: 0;
+				border-top: @indicator-size solid transparent;
+				border-bottom: @indicator-size solid transparent; 
+				border-right:@indicator-size solid @indicator-color; 
+				border-left: none;
+
+			}
+
+			&:before {
+				display: block;
+				content: " ";
+				position: absolute;
+				left: 0px; top: 0;
+
+				width: 0; height: 0;
+				border-top: @indicator-size solid transparent;
+				border-bottom: @indicator-size solid transparent;
+				border-left: @indicator-size solid @indicator-color;
+			}
 		}
-	}
 
-	.rundial-value {
-		position: absolute;
-		left: 0; right: 0;
-		height: 50%;
-		font-size: 20px;
-		text-align: center;
 
-		&.rundial-warn {
-			color: #f00;
+		.rundial-value {
+			left: 0; right: 0; height: 50%;
+			position: absolute;
+			font-size: 20px;
+			text-align: center;
+
+			&.rundial-warn {
+				color: #f00;
+			}
 		}
+
 	}
 
 }

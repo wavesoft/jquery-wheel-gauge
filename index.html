@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Retro Gauge</title>
+		<link rel="stylesheet" type="text/css" href="rundial.css">
+		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+		<script src="src/rundial.js"></script>
+		<script>
+		$(function() {
+
+			// 1) Simple dial
+			$("input.dial.simple").rundial();
+
+			// 2) Dimentioned dial
+			$("input.dial.dimentioned").rundial({
+				width: 80,
+				height: 80
+			});
+
+			// 3) With subdivisions
+			$("input.dial.subdiv").rundial({
+				width: 80,
+				height: 80,
+				min: -500,
+				max: 500,
+				step: 20
+			});
+
+			// 4) Ascending
+			$("input.dial.reverse").rundial({
+				width: 80,
+				height: 80,
+				ascending: true
+			});
+
+			// 5) Out of range
+			$("input.dial.oor").rundial({
+				width: 80,
+				height: 80,
+				min: 10,
+				max: 20,
+				overflowText: "-- top --",
+				overflowElmClass: "rundial-warn",
+				overflowClass: "rundial-overrun",
+				underflowText: "-- bot --",
+				underflowElmClass: "rundial-warn",
+				underflowClass: "rundial-underrun"
+			});
+
+			// 6) Customization
+			$("input.dial.custom").rundial({
+				width: 160,
+				height: 80,
+				format: function(v) { return ""+v+"%"; }
+			});			
+
+			// 7) API Dial
+			$("input.api-dial").rundial({
+				width: 80,
+				height: 80,
+			});
+			$("#btn-shuffle").click(function() {
+				$("input.api-dial").rundial('value', Math.random()*100);
+			});
+
+			// Shuffle values
+			var update = function() {
+				$("input.dial").rundial('value', Math.random()*100);
+			};
+			setInterval(update, 5000);
+			update();
+
+		});
+		</script>
+		<style>
+		body {
+font-family: Gill Sans MT, sans-serif;
+		}
+		table {
+			width: 100%;
+		}
+		table td {
+			border: solid 1px #ddd;
+			vertical-align: top;
+			text-align: left;
+			padding: 10px;
+		}
+		table th {
+			font-weight: normal;
+			background-color: #ddd;
+			color: #333;
+		}
+		</style>
+	</head>
+	<body>
+
+		<h1>jquery-wheel-gauge</h1>
+		<p>In this page we are demonstrating the use of jquery-wheel-gauge plug-in that displays values in a bit more retro spinning-wheel way.</p>
+
+		<h2>Simple drop-in replacement</h2>
+		<p>The wheel gauge plug-in can be used as drop-in replacement to your input element.</p>
+		<table>
+			<tr>
+				<th>Sample</th>
+				<th>Javascript</th>
+			</tr>
+			<tr>
+				<td width="50%">
+					<p><input class="dial simple" value="0" type="text" /></p>
+				</td>
+				<td>
+					<pre>$("input.dial.simple").rundial();
+
+// Change values like this:
+$("input.dial.simple")
+	.val(50).trigger('change');
+					</pre>
+				</td>
+			</tr>
+		</table>
+
+		<h2>With styling information</h2>
+		<p>You can optionally specify customization parameters.</p>
+		<table>
+			<tr>
+				<th>Sample</th>
+				<th>Javascript</th>
+			</tr>
+			<tr>
+				<td width="50%">
+					<p><input class="dial dimentioned" value="0" type="text" /></p>
+				</td>
+				<td>
+					<pre>$("input.dial").rundial({
+    width: 80,
+    height: 80
+});</pre>
+				</td>
+			</tr>
+		</table>
+
+		<h2>Range and steps</h2>
+		<p>You can define what's the value range and subdivision steps.</p>
+		<table>
+			<tr>
+				<th>Sample</th>
+				<th>Javascript</th>
+			</tr>
+			<tr>
+				<td width="50%">
+					<p><input class="dial subdiv" value="0" type="text" /></p>
+				</td>
+				<td>
+					<pre>$("input.dial.subdiv").rundial({
+    width: 80,
+    height: 80,
+    min: -500,
+    max: 500,
+    step: 20
+});
+</pre>
+				</td>
+			</tr>
+		</table>
+
+		<h2>You can also reverse the order</h2>
+		<p>You can define what's the value range and subdivision steps.</p>
+		<table>
+			<tr>
+				<th>Sample</th>
+				<th>Javascript</th>
+			</tr>
+			<tr>
+				<td width="50%">
+					<p><input class="dial reverse" value="0" type="text" /></p>
+				</td>
+				<td>
+					<pre>$("input.dial.reverse").rundial({
+    width: 80,
+    height: 80,
+    ascending: true
+});
+</pre>
+				</td>
+			</tr>
+		</table>
+
+		<h2>Custom format</h2>
+		<p>If you want to display different values, you can use a formatting function.</p>
+		<table>
+			<tr>
+				<th>Sample</th>
+				<th>Javascript</th>
+			</tr>
+			<tr>
+				<td width="50%">
+					<p><input class="dial custom" value="0" type="text" /></p>
+				</td>
+				<td>
+					<pre>$("input.dial.custom").rundial({
+    width: 160,
+    height: 80,
+    format: function(v) { return ""+v+"%"; }
+});
+</pre>
+				</td>
+			</tr>
+		</table>
+
+		<h2>Out of range customization</h2>
+		<p>The wheel widget will automatically clip the out-of-range values. The way this happens is fully customizable.</p>
+		<table>
+			<tr>
+				<th>Sample</th>
+				<th>Javascript</th>
+			</tr>
+			<tr>
+				<td width="50%">
+					<p><input class="dial oor" value="0" type="text" /></p>
+				</td>
+				<td>
+					<pre>$("input.dial.oor").rundial({
+    width: 80,
+    height: 80,
+    min: 10,
+    max: 20,
+    overflowText: "-- top --",
+    overflowElmClass: "rundial-warn",
+    overflowClass: "rundial-overrun",
+    underflowText: "-- bot --",
+    underflowElmClass: "rundial-warn",
+    underflowClass: "rundial-underrun"
+});
+</pre>
+				</td>
+			</tr>
+		</table>
+
+		<h2>Setting values</h2>
+		<p>The wheel widget will use the iniital value of the input field. Any further change should be triggered using the .rundial() interface.</p>
+		<table>
+			<tr>
+				<th>Sample</th>
+				<th>Javascript</th>
+			</tr>
+			<tr>
+				<td width="50%">
+					<p><input class="api-dial" value="0" type="text" /></p>
+					<p><input id="btn-shuffle" value="Shuffle" type="button" /></p>
+				</td>
+				<td>
+					<pre>$("input.api-dial").rundial({
+    width: 80,
+    height: 80,
+});
+
+$("#btn-shuffle").click(function() {
+    $("input.api-dial").rundial('value', Math.random()*100);
+});
+</pre>
+				</td>
+			</tr>
+		</table>
+
+	</body>
+</html>
