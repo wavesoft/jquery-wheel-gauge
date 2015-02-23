@@ -38,7 +38,7 @@ The rundial function accelts a javascript object with the following basic proper
 
 And the following advanced properties: 
 
-  * __dampValue__ : The damping scale for the easing animation _(default: 10)_
+  * __dampValue__ : The damping value for the easing animation. The bigger this value, the longer the animation will be. _(default: 10)_
   * __updateDelay__ : How frequently to poll the value of the input element for changes. Set to 0 to disable polling. _(default: 0)_
   * __format__ : The formatter function to use for the displayed values. _(default: `function(v){ return String(v); }`)_
   * __overflowText__ : The value to display when the text is overflowing. _(default: '(!)')_
