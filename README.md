@@ -2,7 +2,7 @@
 
 A jQuery plugin for displaying a values in a more retro way.
 
-![Demo Snapshot](//raw.githubusercontent.com/wavesoft/jquery-wheel-gauge/master/src/snapshot.png)
+![Demo Snapshot](../blob/master/src/snapshot.png?raw=true)
 
 ## How to use
 
