@@ -44,7 +44,7 @@ And the following advanced properties:
   * __overflowText__ : The value to display when the text is overflowing. _(default: '(!)')_
   * __overflowElmClass__ : The class to append to the value element that displays the `overflowText`. _(default: 'rundial-warn')_
   * __overflowClass__ : The class to append to the whole rundial element when an overflow occurs. _(default: 'rundial-overrun')_
- * __underflowText__ : The value to display when the text is underflowing. _(default: '(!)')_
+  * __underflowText__ : The value to display when the text is underflowing. _(default: '(!)')_
   * __underflowElmClass__ : The class to append to the value element that displays the `underflowText`. _(default: 'rundial-warn')_
   * __underflowClass__ : The class to append to the whole rundial element when an underflow occurs. _(default: 'rundial-underrun')_
   * __adoptClasses__ : Set to `true` to adopt the classes the input element had before being replaced by the rundial. _(default: true)_
