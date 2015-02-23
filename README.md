@@ -2,7 +2,7 @@
 
 A jQuery plugin for displaying a values in a more retro way.
 
-![Demo Snapshot](../blob/master/src/snapshot.png?raw=true)
+![Demo Snapshot](src/snapshot.png)
 
 ## How to use
 
